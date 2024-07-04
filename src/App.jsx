@@ -8,8 +8,9 @@ function App() {
   const [fetching, setFetching] = useState(false);
   const [tofetch, setTofetch] = useState(true);
   const [pokemonTable, setPokemonTable] = useState([]);
-  const limit = 10; // Puedes ajustar el límite según tus necesidades
+  const limit = 15; // Se ajusta el límite a lo que se necesite
 
+  // Función asíncrona para el Fetch
   async function pokemonFetch() {
     setFetching(true);
     const offset = (currentPage - 1) * limit;
@@ -55,6 +56,7 @@ function App() {
     }
   };
 
+  // Opciones del Tilt
   const defaultOptions = {
     reverse:        false,  
     max:            35,     

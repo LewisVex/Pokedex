@@ -1,4 +1,3 @@
-import Image from 'react'
 import Logo from '../img/Logo.png?url'
 
 const PokedexHeader = () => {
