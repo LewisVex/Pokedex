@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PokedexHeader from './components/PokedexHeader';
 import './index.css';
+import { Tilt } from 'react-tilt'
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,11 +55,24 @@ function App() {
     }
   };
 
+  const defaultOptions = {
+    reverse:        false,  
+    max:            35,     
+    perspective:    1000,   
+    scale:          1.1,    
+    speed:          1,   
+    transition:     true,   
+    axis:           null,   
+    reset:          true,    
+    easing:         "cubic-bezier(.03,.98,.52,.99)",  
+  }
+
   return (
     <>
       <PokedexHeader />
       <section className="w-screen h-full bg-repeat grid grid-cols-5 items-center">
         {pokemonTable.map((pokemon, index) => (
+          <Tilt options={defaultOptions}>
           <div className='h-72 w-60 bg-gradient-to-l from-blue-400 via-purple-400 to-blue-600 animation rounded-md flex-col m-auto my-5 border-8 border-yellow-400 items-center relative' key={index}>
             <div className='flex justify-between'>
               <h1 className='text-black pt-1 pl-3 text-xl font-semibold'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
@@ -76,6 +90,7 @@ function App() {
               <h1 className='text-black pt-1 pr-3 text-base font-semibold'>Altura: {pokemon.height}</h1>
             </div>
           </div>
+          </Tilt>
         ))}
       </section>
     </>
